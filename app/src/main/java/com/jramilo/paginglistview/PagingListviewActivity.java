@@ -65,7 +65,7 @@ public class PagingListviewActivity extends AppCompatActivity {
         recyclerView.setAdapter(pagingListviewAdapter);
 
         if(savedInstanceState != null) {
-            ArrayList<NewsFeed> savedFeedItems = savedInstanceState.getParcelable(STATE_LIST_NAME);
+            ArrayList<NewsFeed> savedFeedItems = savedInstanceState.getParcelableArrayList(STATE_LIST_NAME);
             pagingListviewAdapter.addNewsFeeds(savedFeedItems);
         } else {
             getFeeds(0);
@@ -88,6 +88,10 @@ public class PagingListviewActivity extends AppCompatActivity {
     }
 
     public void getFeeds(final int items) {
+        if(!progressBar.isShown()) {
+            progressBar.setVisibility(View.VISIBLE);
+        }
+
         Observer<ArrayList> feedObserver = new Observer<ArrayList>() {
             @Override
             public void onSubscribe(Disposable d) {}
