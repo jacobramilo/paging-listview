@@ -10,7 +10,8 @@ import android.view.View;
 import android.widget.ProgressBar;
 
 import com.jramilo.paginglistview.adapter.PagingListviewAdapter;
-import com.jramilo.paginglistview.data.YahooFeedAPI;
+import com.jramilo.paginglistview.api.YahooFeedAPI;
+import com.jramilo.paginglistview.data.NewsFeed;
 
 import java.util.ArrayList;
 
@@ -24,9 +25,9 @@ import io.reactivex.schedulers.Schedulers;
 
 public class PagingListviewActivity extends AppCompatActivity {
     private static final int MAX_LIST_REFRESH_COUNT = 10;
+    private static final String STATE_LIST_NAME = "list-data";
 
     private PagingListviewAdapter pagingListviewAdapter;
-
     private ProgressBar progressBar;
 
     @Override
@@ -63,7 +64,18 @@ public class PagingListviewActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(pagingListviewAdapter);
 
-        getFeeds(0);
+        if(savedInstanceState != null) {
+            ArrayList<NewsFeed> savedFeedItems = savedInstanceState.getParcelable(STATE_LIST_NAME);
+            pagingListviewAdapter.addNewsFeeds(savedFeedItems);
+        } else {
+            getFeeds(0);
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelableArrayList(STATE_LIST_NAME, pagingListviewAdapter.getNewsFeeds());
     }
 
     private Observable<ArrayList> getFeedObservable(final int pageIndex) {

@@ -1,6 +1,8 @@
-package com.jramilo.paginglistview.data;
+package com.jramilo.paginglistview.api;
 
 import android.util.Log;
+
+import com.jramilo.paginglistview.data.NewsFeed;
 
 import org.json.JSONArray;
 import org.json.JSONException;

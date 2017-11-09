@@ -30,6 +30,10 @@ public class PagingListviewAdapter extends RecyclerView.Adapter<PagingListviewAd
         notifyDataSetChanged();
     }
 
+    public ArrayList<NewsFeed> getNewsFeeds() {
+        return mNewsFeeds;
+    }
+
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
