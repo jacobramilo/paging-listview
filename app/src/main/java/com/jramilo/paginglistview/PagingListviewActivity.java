@@ -35,9 +35,8 @@ public class PagingListviewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_paging_listview);
 
-        pagingListviewAdapter = new PagingListviewAdapter(this);
-
         progressBar = (ProgressBar) findViewById(R.id.progressbar);
+        pagingListviewAdapter = new PagingListviewAdapter(this);
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rv_feeds);
         recyclerView.setHasFixedSize(true);
@@ -52,9 +51,6 @@ public class PagingListviewActivity extends AppCompatActivity {
                 if ((visibleItemCount + firstVisibleItemPosition) >= totalItemCount
                         && firstVisibleItemPosition >= 0
                         && totalItemCount >= MAX_LIST_REFRESH_COUNT) {
-                    if(!progressBar.isShown()) {
-                        progressBar.setVisibility(View.VISIBLE);
-                    }
                     getFeeds(totalItemCount);
                 }
             }
