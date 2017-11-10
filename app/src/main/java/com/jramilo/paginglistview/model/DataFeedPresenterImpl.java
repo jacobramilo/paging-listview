@@ -1,10 +1,5 @@
 package com.jramilo.paginglistview.model;
 
-import android.support.constraint.ConstraintLayout;
-import android.support.design.widget.Snackbar;
-import android.view.View;
-
-import com.jramilo.paginglistview.R;
 import com.jramilo.paginglistview.model.api.YahooFeedAPI;
 import com.jramilo.paginglistview.presenter.DataFeedPresenter;
 import com.jramilo.paginglistview.view.DataFeedView;
