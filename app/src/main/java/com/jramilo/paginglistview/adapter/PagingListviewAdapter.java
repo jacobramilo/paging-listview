@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.jramilo.paginglistview.R;
-import com.jramilo.paginglistview.data.NewsFeed;
+import com.jramilo.paginglistview.model.NewsFeed;
 
 import java.util.ArrayList;
 
